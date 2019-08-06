@@ -1,0 +1,19 @@
+<tunnel>
+ <units>
+   <entry name="{{ panos_tunnel }}">
+     <mtu>1350</mtu>
+   </entry>
+ </units>
+</tunnel>
+<loopback>
+ <units>
+   <entry name="loopback.100">
+     <adjust-tcp-mss>
+       <enable>no</enable>
+     </adjust-tcp-mss>
+     <ip>
+       <entry name="1.1.1.1/32"/>
+     </ip>
+   </entry>
+ </units>
+</loopback>

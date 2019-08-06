@@ -1,0 +1,36 @@
+<entry name="Azure-Vnet-{{ panos_tunnel }}">
+ <authentication>
+   <pre-shared-key>
+     <key>{{ panos_ike_presharedkey | md5_hash }}</key>
+   </pre-shared-key>
+ </authentication>
+ <protocol>
+   <ikev1>
+     <dpd>
+       <enable>yes</enable>
+     </dpd>
+   </ikev1>
+   <ikev2>
+     <dpd>
+       <enable>yes</enable>
+     </dpd>
+     <ike-crypto-profile>AzureIKECrypto</ike-crypto-profile>
+   </ikev2>
+   <version>ikev2</version>
+ </protocol>
+ <protocol-common>
+   <nat-traversal>
+     <enable>no</enable>
+   </nat-traversal>
+   <fragmentation>
+     <enable>no</enable>
+   </fragmentation>
+   <passive-mode>yes</passive-mode>
+ </protocol-common>
+ <local-address>
+   <interface>{{ panos_ipsec_interface }}</interface>
+ </local-address>
+ <peer-address>
+   <ip>{{ azure_vgw_ip }}</ip>
+ </peer-address>
+</entry>
